@@ -1,0 +1,24 @@
+.o_sub_menu{
+    font-family: Khmer OS content; src:url(../fonts/KhmerOS_content.ttf) ;format('truetype');
+    font-size:16px;
+    color: blue;
+}
+.oe_secondary_menu{
+    font-family: Khmer OS content; src:url(../fonts/KhmerOS_content.ttf) ;format('truetype');
+    font-size:14px;
+    color: black;
+}
+.o_content{
+    font-family: Khmer OS content; src:url(../fonts/KhmerOS_content.ttf) ;format('truetype');
+}
+.o_cp_buttons{
+    font-family: Khmer OS content; src:url(../fonts/KhmerOS_content.ttf) ;format('truetype');
+}
+.active{
+    font-family: Khmer OS content; src:url(../fonts/KhmerOS_content.ttf) ;format('truetype');
+
+}
+.o_cp_controller{
+    font-family: Khmer OS content; src:url(../fonts/KhmerOS_content.ttf) ;format('truetype');
+
+}

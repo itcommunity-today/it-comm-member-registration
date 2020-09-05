@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<t t-name="UserMenu">
+  <t t-jquery=".dropdown-menu" t-operation="replace">
+    <li class="o_user_menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">
+            <img class="img-circle oe_topbar_avatar" t-att-src="_s + '/web/static/src/img/user_menu_avatar.png'"/>
+            <span class="oe_topbar_name"/> <span class="caret"/>
+        </a>
+        <ul class="dropdown-menu" role="menu" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <!--<li><a href="#" data-menu="documentation">Documentation</a></li>-->
+            <!--<li><a href="#" data-menu="support">Support</a></li>-->
+            <!--<li class="divider"/>-->
+            <li><a href="#" data-menu="settings">កែប្រែព័ត៌មាន</a></li>
+            <!--<li><a href="#" data-menu="account">My Odoo.com account</a></li>-->
+            <li><a href="#" data-menu="logout">ចាកចេញ</a></li>
+        </ul>
+    </li>
+  </t>
+</t>
+<input t-name="SearchView.InputView" type="text" class="o_searchview_input" placeholder="ស្វែងរក..."/>
+<div t-name="SearchView.FilterMenu" class="btn-group o_dropdown">
+    <button class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+        <span class="fa fa-filter"/>តម្រងទិន្នន័យ<span class="caret"/>
+    </button>
+    <ul class="dropdown-menu o_filters_menu" role="menu">
+        <li class="o_add_filter o_closed_menu">
+            <a href="#">បង្កើតតម្រងទិន្នន័យ</a>
+        </li>
+        <li class="o_add_filter_menu">
+            <button class="btn btn-primary btn-sm o_apply_filter" type="button">អនុវត្ត</button>
+            <button class="btn btn-default btn-sm o_add_condition" type="button"><span class="fa fa-plus-circle"/>បន្ថែមលក្ខខ័ណ្ឌ</button>
+        </li>
+    </ul>
+</div>
+<div t-name="SearchView.GroupByMenu" class="btn-group hidden-xs o_dropdown">
+    <button class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+        <span class="fa fa-bars"/> ដាក់ជាក្រុម <span class="caret"/>
+    </button>
+    <ul class="dropdown-menu o_group_by_menu" role="menu">
+        <li class="divider"/>
+        <li class="o_add_custom_group o_closed_menu">
+            <a href="#">បង្កើតជាក្រុមដោយខ្លួនឯង</a>
+        </li>
+    </ul>
+</div>
+<t t-name="GroupByMenuSelector">
+    <li><select class="o_add_group o_group_selector">
+        <t t-foreach="groupable_fields" t-as="field">
+            <option t-att-data-name="field.name"><t t-esc="field.string"/></option>
+        </t>
+    </select></li>
+    <li>
+        <button type="button" class="btn btn-primary btn-sm o_add_group o_select_group">អនុវត្ត</button>
+    </li>
+</t>
+<div t-name="SearchView.FavoriteMenu" class="btn-group o_dropdown">
+    <button class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+        <span class="fa fa-star"/>​ដាក់ជាចូលចិត្ត  <span class="caret"/>
+    </button>
+    <ul class="dropdown-menu o_favorites_menu" role="menu">
+        <li class="divider"/>
+        <li class="o_save_search o_closed_menu">
+            <a href="#">រក្សាទុកការស្វែងរកបច្ចុប្បន្ន</a>
+        </li>
+        <li class="o_save_name">
+            <input type="text"/>
+        </li>
+        <li class="o_save_name">
+            <span><div class="o_checkbox"><input type="checkbox"/><span/></div> ប្រើតាមលំនាំដើម</span>
+        </li>
+        <li class="o_save_name">
+            <span><div class="o_checkbox"><input type="checkbox"/><span/></div> ចែករំលែកជាមួយអ្នកប្រើប្រាស់ទាំងអស់ </span><span class="fa fa-users"/>
+        </li>
+        <li class="o_save_name">
+            <button type="button" class="btn btn-primary btn-sm">Save</button>
+        </li>
+    </ul>
+</div>
+<header t-name="Menu">
+    <nav class="o_main_navbar" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+        <ul class="o_menu_apps"/>
+        <a class="o_menu_brand" role="button"/>
+        <ul class="o_menu_sections" role="menu"/>
+        <ul class="o_menu_systray" role="menu"/>
+    </nav>
+</header>
+<t t-name="ListView.buttons">
+    <div class="o_list_buttons" role="toolbar" aria-label="Main actions" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+        <button type="button" class="btn btn-primary o_list_button_save" accesskey="s">
+            រក្សាទុក
+        </button>
+        <button type="button" class="btn btn-secondary o_list_button_discard" accesskey="j">
+            ចាកចេញ
+        </button>
+        <t t-if="widget.is_action_enabled('create')">
+            <button type="button" class="btn btn-primary o_list_button_add" accesskey="c">
+                បង្កើតថ្មី
+            </button>
+        </t>
+
+    </div>
+</t>
+<t t-extend="ImportView.import_button">
+    <t t-jquery=".btn.btn-sm.btn-default.o_button_import" t-operation="replace">
+        <button t-if="widget.is_action_enabled('import')" type="button" class="btn btn-sm btn-default o_button_import">
+            Import
+        </button>
+    </t>
+</t>
+<t t-name="FormView.buttons">
+    <div class="o_form_buttons_view" role="toolbar" aria-label="Main actions" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+        <button t-if="widget.is_action_enabled('edit')" type="button"
+                class="btn btn-primary o_form_button_edit" accesskey="a">
+            កែប្រែ
+        </button>
+        <button t-if="widget.is_action_enabled('create')" type="button"
+                class="btn btn-secondary o_form_button_create" accesskey="c">
+            បង្កើតថ្មី
+        </button>
+    </div>
+    <div class="o_form_buttons_edit" role="toolbar" aria-label="Main actions" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+        <button type="button"
+                class="btn btn-primary o_form_button_save" accesskey="s">
+            រក្សាទុក
+        </button>
+        <button type="button"
+                class="btn btn-secondary o_form_button_cancel" accesskey="j">
+            ចាកចេញ
+        </button>
+    </div>
+</t>
+<t t-name="KanbanView.buttons">
+    <div style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+        <button type="button" t-attf-class="btn #{btnClass} o-kanban-button-new" accesskey="c">
+            <t t-esc="create_text || _t('បង្កើតថ្មី')"/>
+        </button>
+    </div>
+</t>
+</templates>

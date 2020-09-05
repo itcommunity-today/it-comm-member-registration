@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="homepage_extend" inherit_id="web.login">
+    <xpath expr="//div[hasclass('form-group','field-login')]" position='replace'>
+        <div class="form-group field-login" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <label for="login">អុីម៉ែល</label>
+            <input type="text" placeholder="អុីម៉ែល" name="login" t-att-value="login" id="login" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required" autofocus="autofocus" autocapitalize="off"/>
+        </div>
+    </xpath>
+    <xpath expr="//div[hasclass('form-group','field-password')]" position='replace'>
+        <div class="form-group field-password" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <label for="password">ពាក្យសម្ងាត់</label>
+            <input type="password" placeholder="ពាក្យសម្ងាត់" name="password" id="password" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+        </div>
+    </xpath>
+    <xpath expr="//button[hasclass('btn','btn-primary','btn-block')]"  position='replace'>
+        <button type="submit" class="btn btn-primary btn-block" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">ចូល</button>
+    </xpath>
+    <xpath expr="//div[hasclass('justify-content-between','mt-2','d-flex','small')]" position="replace">
+        <div class="justify-content-between mt-2 d-flex small" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}">បង្កើតគណនី</a>
+            <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}">ភ្លេចពាក្យសម្ងាត់</a>
+        </div>
+    </xpath>
+    <xpath expr="//button[hasclass('btn','btn-link','btn-sm','btn-block')]" position="replace">
+
+    </xpath>
+</template>
+
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="pos_data_1" model="position.position">
+            <field name="name">ប្រធាននាយកដ្ឋាន</field>
+        </record>
+        <record id="pos_data_2" model="position.position">
+            <field name="name">ឯកឧត្ដមអគ្គនាយក</field>
+        </record>
+        <record id="pos_data_3" model="position.position">
+            <field name="name">ឯកឧត្ដមអនុរដ្ឋលេខាធិកា</field>
+        </record>
+        <record id="pos_data_4" model="position.position">
+            <field name="name">ឯកឧត្ដមរដ្ឋលេខា</field>
+        </record>
+        <record id="pos_data_5" model="position.position">
+            <field name="name">ឯកឧត្ដមរដ្ឋមន្ត្រី</field>
+        </record>
+    </data>
+</odoo>
