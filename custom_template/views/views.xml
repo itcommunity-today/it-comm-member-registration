@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template  inherit_id="auth_signup.reset_password" name="Reset password" id="auth_signup_reset_password">
+    <xpath  expr="//div[hasclass('form-group','field-login')]" position="replace">
+        <div class="form-group field-login" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <label for="login" class="control-label">អ្នកប្រើប្រាស់(e-Mail)</label>
+            <input type="text" name="login" t-att-value="login" id="login" class="form-control" autofocus="autofocus" required="required" autocapitalize="off"/>
+        </div>
+    </xpath>
+    <xpath  expr="//div[hasclass('clearfix','oe_login_buttons')]" position="replace">
+        <div class="clearfix oe_login_buttons" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <a t-if="not token" t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link pull-right">ត្រលប់ទៅភ្ជាប់ចូលវិញ</a>
+            <a t-if="invalid_token" href="/web/login" class="btn btn-link pull-right">ត្រលប់ទៅភ្ជាប់ចូលវិញ</a>
+            <button type="submit" class="btn btn-primary pull-left">យល់ព្រម</button>
+        </div>
+    </xpath>
+</template>
+
+</odoo>

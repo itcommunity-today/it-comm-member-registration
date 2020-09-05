@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="custom_auth_signup_assets" inherit_id="website.assets_frontend">
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/custom_auth_signup/static/src/js/signup.js" />
+            </xpath>
+        </template>
+    <template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
+        <div class="form-group field-login" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <label for="login" class="control-label">អុីម៉ែលរបស់អ្នក</label>
+            <input type="text" name="login" t-att-value="login" id="login" class="form-control" autofocus="autofocus"
+                autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+        </div>
+        <div class="form-group field-name" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <label for="name" class="control-label">ឈ្មេាះរបស់អ្នក</label>
+            <input type="text" name="name" t-att-value="name" id="name" class="form-control" placeholder="ឧទាហរណ៍:ជ័យ មង្គល"
+                required="required" t-att-readonly="'readonly' if only_passwords else None"
+                t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+        </div>
+        <div class="form-group field-password" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <label for="password" class="control-label">ពាក្យសម្ងាត់</label>
+            <input type="password" name="password" id="password" class="form-control"
+                required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
+        </div>
+        <div class="form-group field-confirm_password" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+            <label for="confirm_password" class="control-label">បញ្ជាក់ពាក្យសម្ងាត់</label>
+            <input type="password" name="confirm_password" id="confirm_password" class="form-control" required="required"/>
+        </div>
+    </template>
+        <template id="auth_signup_form" inherit_id="auth_signup.fields" name="Signup Fields Extend">
+            <xpath expr="//div[hasclass('field-confirm_password')]" position="after">
+                <div class="form-group field-phone" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+                    <label for="phone" class="control-label">លេខទូរស័ព្ទ</label>
+                    <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None"
+	                t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-company_type" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+                    <label for="company_type" class="control-label">ប្រភេទក្រុមហ៊ុន</label>
+                    <select name="company_type" id="company_type" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None"
+	                    t-att-autofocus="'autofocus' if login and not only_passwords else None">
+                        <option value="">Select</option>
+                        <option value="person">person</option>
+                        <option value="company">company</option>
+                    </select>
+                </div>
+                  <div class="form-group field-grade" style="font-family:Khmer OS content; src:url(../font/KhmerOS_content.ttf) ;format('truetype'); font-size:15px;">
+                    <label for="grade_id" class="control-label">ចំណាត់ថ្នាក់ជាដៃគូរ</label>
+                    <select name="grade_id" class="form-control" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None">
+                        <option value="">Select</option>
+                        <t t-foreach="grades or []" t-as="grade">
+                            <option t-att-value="grade.id">
+                                <t t-esc="grade.name" />
+                            </option>
+                        </t>
+                    </select>
+                  </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

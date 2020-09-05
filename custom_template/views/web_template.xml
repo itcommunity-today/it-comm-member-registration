@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="custom assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/custom_template/static/src/css/fonts.css"/>
+        </xpath>
+    </template>
+    <template id="MYSITE_layout" inherit_id="web.layout" name="Web layout">
+        <xpath expr="//head//link" position="after">
+            <link rel="shortcut icon" href="/custom_template/static/src/img/favicon.ico" type="image/x-icon"/>
+        </xpath>
+    </template>
+</odoo>

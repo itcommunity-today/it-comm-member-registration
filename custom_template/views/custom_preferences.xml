@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+        <record model="ir.ui.view" id="inherit_view_form_preferences">
+            <field name="name">res_users_preferences_form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="preference_change_password" position="replace">
+                       <button name="preference_change_password" type="object" string="ប្ដូរពាក្យសម្ងាត់" class="oe_link"/>
+                    </button>
+                    <field name="lang"  position="replace">
+                        <field name="lang" readonly="0" string="ភាសា"/>
+                    </field>
+                    <field name="tz" position="replace">
+                        <field name="tz" widget="timezone_mismatch" options="{'tz_offset_field': 'tz_offset'}" readonly="0" string="ម៉ោងតំបន់"/>
+                    </field>
+                    <field name="email" position="replace">
+                        <field name="email" widget="email" readonly="0" string="អ៊ីម៉ែល"/>
+                    </field>
+                    <field name="signature" position="replace">
+                        <field name="signature" readonly="0" string="ហត្ថលេខាក្នុងអ៊ីម៉ែល"/>
+                    </field>
+                    <button name="preference_save" position="replace">
+                        <button name="preference_save" type="object" string="រក្សាទុក" class="btn-primary"/>
+                    </button>
+                    <button name="preference_cancel" position="replace">
+                        <button name="preference_cancel" string="លុបចោលការកែប្រែ" special="cancel" class="btn-default"/>
+                    </button>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>

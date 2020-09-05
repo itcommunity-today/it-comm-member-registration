@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="inherit_view_form_profiles">
+            <field name="name">res.users.preferences.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="hr.res_users_view_form_profile"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="preference_change_password" position="replace">
+                       <button name="preference_change_password" type="object" string="ប្ដូរពាក្យសម្ងាត់" class="btn btn-secondary"/>
+                    </button>
+                    <field name="mobile_phone" widget="phone" attrs="{'readonly': [('can_edit', '=', False)]}" position="replace">
+                        <field name="mobile_phone" widget="phone" attrs="{'readonly': [('can_edit', '=', False)]}" string="លេខទូរស័ព្ទ"/>
+                    </field>
+                    <field name="work_phone" position="replace">
+                        <field name="work_phone" widget="phone" attrs="{'readonly': [('can_edit', '=', False)]}" string="ទូរស័ព្ទ​កន្លែងធ្វើការ"/>
+                    </field>
+                    <field name="work_email" position="replace">
+                        <field name="work_email" widget="email" attrs="{'readonly': [('can_edit', '=', False)]}" string="អ៊ីម៉ែល"/>
+                    </field>
+                    <field name="work_location" position="replace">
+                        <field name="work_location" attrs="{'readonly': [('can_edit', '=', False)]}" string="ទីតាំងការិយាល័យ"/>
+                    </field>
+                    <page name="preferences" position="replace">
+                        <page name="preferences" string="ចំណូលចិត្ត"><div>$0</div></page>
+                    </page>
+                    <page name="public" position="replace">
+                        <page name="public" string="ព័ត៌មានការងារ">
+                            <div id="o_work_employee_container"> <!-- These two div are used to position org_chart -->
+                                <div id="o_work_employee_main">
+                                    <group string="ទីតាំង">
+                                        <field name="department_id" string="នាយកដ្ឋាន" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="address_id" string="អាស័យដ្ឋាន" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group name="managers" string="ការទទួលខុសត្រូវ">
+                                        <field name="employee_parent_id" string="អ្នកគ្រប់គ្រង" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="coach_id" string="អ្នកបង្រៀន" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                </div>
+                            </div>
+                        </page>
+                    </page>
+                    <page name="personal_information" position="replace">
+                        <page name="personal_information" string="ព័ត៌មានផ្ទាល់ខ្លួន">
+                            <group>
+                                    <group string="ព័ត៌មានទំនាក់ទំនង">
+                                        <field name="employee_ids" invisible="1"/>
+                                        <field name="address_home_id" string="អាស័យដ្ឋាន" context="{'show_address': 1,'default_employee_ids': employee_ids,'default_type': 'private','form_view_ref': 'base.res_partner_view_form_private'}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="private_email" string="អ៊ីម៉ែល" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="employee_phone" string="លេខទូរស័ទ្ទ" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="employee_bank_account_id" string="លេខគណនីធនាគា" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="km_home_work" string="ចំងាយពីកន្លែងការងារ" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group string="សញ្ជាតិ">
+                                        <field name="employee_country_id" string="បុគ្គលិករបស់ប្រទេស" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="identification_id" string="លេខអត្តសញ្ញាណប័ណ្ណ" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="passport_id" string="សំបុត្រឆ្លងដែន" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="gender" string="ភេទ" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="birthday" string="ថ្ងៃខែឆ្នាំកំណើត" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="place_of_birth" string="ទីកន្លែងកំណើត" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="country_of_birth" string="ប្រទេសកំណើត" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group string="ស្ថានភាពអាពាហ៍ពិពាហ៍">
+                                        <field name="marital" string="អាពាហ៍ពិពាហ៍" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="spouse_complete_name" string="ឈ្មោះប្រពន្ធ" attrs="{'invisible': [('marital', 'not in', ['married', 'cohabitant'])], 'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="spouse_birthdate" string="ថ្ងៃខែឆ្នាំកំណើតប្រពន្ធ" attrs="{'invisible': [('marital', 'not in', ['married', 'cohabitant'])], 'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group string="ការសិក្សា">
+                                        <field name="certificate" string="វិញ្ញាបនបត្រ" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="study_field" string="កំរិតសិក្សា" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="study_school" string="សាលាសិក្សា" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group string="ព័ត៌មានកូន">
+                                        <field name="children" string="កូន" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group string="ព័ត៌មានសង្គ្រោះបន្ទាន់">
+                                        <field name="emergency_contact" string="ទំនាក់ទំនងបន្ទាន់" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="emergency_phone" string="លេខទូរស័ព្ទសង្គ្រោះបន្ទាន់" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group string="ប័ណ្ណការងារ" name="work_permit">
+                                        <field name="visa_no" string="លេខវីសា" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="permit_no" string="លេខប័ណ្ណការងារ" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="visa_expire" string="ថ្ងៃផុតកំណត់វីសា" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                            </group>
+                        </page>
+                    </page>
+                    <page name="hr_settings" position="replace">
+                        <page name="hr_settings" string="ការកំណត់ធនធានមនុស្ស">
+                            <group>
+                                    <group string="ការចូលរួម" name="identification_group">
+                                        <field name="pin" string="លេខPin" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="barcode" string="បាកូដ" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                            </group>
+                        </page>
+                    </page>
+
+                </data>
+			</field>
+        </record>
+	</data>
+</odoo>
