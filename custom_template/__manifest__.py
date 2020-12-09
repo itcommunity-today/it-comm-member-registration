@@ -26,7 +26,7 @@
         # 'security/ir.model.access.csv',
         # 'data/data.xml',
         'views/custom_preferences.xml',
-        'views/custom_profile.xml',
+        # 'views/custom_profile.xml',
         'views/templates.xml',
         'views/views.xml',
         'views/q_database.xml',
